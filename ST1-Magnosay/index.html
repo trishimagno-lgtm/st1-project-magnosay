@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trisha C. Magnosay · ST1 Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <div id="world"></div>
+  <div id="vignette"></div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="stats" class="chip"><span class="k">STOPS</span> <b id="stat-visited">0</b> / <b id="stat-total">0</b></div>
+    <div id="zone" class="chip pill" aria-live="polite"></div>
+    <div id="topright">
+      <div id="speed" class="chip"><span class="k">SPEED</span> <b id="speed-val">0</b> <span class="k">KM/H</span></div>
+      <button id="stops-btn" class="chip btn" aria-haspopup="true" aria-expanded="false">Stops ▾</button>
+      <ul id="stops-menu" class="menu" hidden></ul>
+    </div>
+    <canvas id="minimap"></canvas>
+    <div id="hint" class="chip"><b>W A S D</b> / arrows to drive &nbsp;·&nbsp; <b>ENTER</b> to open &nbsp;·&nbsp; <b>ESC</b> to close</div>
+    <button id="prompt" class="prompt" hidden></button>
+
+    <div id="touch" aria-hidden="true">
+      <div class="pad-l"><button data-k="left">◀</button><button data-k="right">▶</button></div>
+      <div class="pad-r"><button data-k="up">▲</button><button data-k="down">▼</button></div>
+    </div>
+  </div>
+
+  <!-- Start screen -->
+  <div id="intro" class="overlay intro">
+    <div class="intro-inner">
+      <p class="eyebrow" id="intro-name"></p>
+      <h1>PORTFOLIO</h1>
+      <p class="sub">DRIVE AROUND TO EXPLORE</p>
+      <div class="keys" aria-hidden="true">
+        <span class="key">W</span>
+        <span class="key">A</span><span class="key">S</span><span class="key">D</span>
+      </div>
+      <ul id="intro-stops" class="legend"></ul>
+      <p class="sub small" id="intro-count"></p>
+      <button id="start-btn" class="start">Press any key to start</button>
+    </div>
+  </div>
+
+  <!-- Detail panel -->
+  <div id="panel" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="panel-title">
+    <div class="sheet">
+      <header class="sheet-head">
+        <span id="panel-tag" class="tag"></span>
+        <button id="panel-close" class="btn" aria-label="Close and keep driving">✕ <span class="k">ESC</span></button>
+      </header>
+      <div id="panel-body" class="sheet-body"></div>
+      <footer class="sheet-foot">
+        <button id="panel-prev" class="btn">← Previous stop</button>
+        <span id="panel-count" class="k"></span>
+        <button id="panel-next" class="btn">Next stop →</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Image zoom -->
+  <div id="lightbox" class="overlay lightbox" hidden role="dialog" aria-modal="true" aria-label="Enlarged image">
+    <img id="lightbox-img" alt="">
+    <button id="lightbox-close" class="btn">✕ <span class="k">ESC</span></button>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
