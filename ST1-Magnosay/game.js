@@ -529,7 +529,7 @@
   /* ------------------------------------------------------------------
      Intro screen + input
   ------------------------------------------------------------------- */
-  $('#intro-name').textContent = P.name;
+  $('#intro-title').textContent = P.name.toUpperCase();
   $('#intro-count').textContent = `Visit all ${stops.length} stops in order`;
   const legend = $('#intro-stops');
   stops.forEach(s => legend.append(el('li', { style: `--c:${s.color}`, text: s.short })));
